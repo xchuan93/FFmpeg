@@ -1,6 +1,6 @@
 # FFmpeg
-# ffmpeg学习：封装音视频到同一个文件（muxing.c源码分析）
 
+ffmpeg学习：封装音视频到同一个文件（muxing.c源码分析）
 这里插讲以下使用ffmpeg生成gif的命令： 
 当我们执行muxing可执行文件的时候,比如，执行./muxing hello.mp4，就会生成Mp4文件，我们可以将其转为gif格式的图片： 
 ffmpeg -i hello.mp4 -r 10 -t 1 hello.gif 
