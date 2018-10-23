@@ -1,5 +1,5 @@
 # FFmpeg
-ffmpeg学习：封装音视频到同一个文件（muxing.c源码分析）
+## ffmpeg学习：封装音视频到同一个文件（muxing.c源码分析）
 这里插讲以下使用ffmpeg生成gif的命令： 
 当我们执行muxing可执行文件的时候,比如，执行./muxing hello.mp4，就会生成Mp4文件，我们可以将其转为gif格式的图片： 
 ffmpeg -i hello.mp4 -r 10 -t 1 hello.gif 
@@ -127,14 +127,14 @@ int main(int argc, char **argv)
 
 
 
-# 1:创建AVFormatContext结构体
-# 2:在AVFormatContext结构体下，创建AVOutputFormat结构体创建一个输出文件
-# 3:添加视频流，添加音频流 add_stream
-# 4:打开视频流，打开音频流 open_stream
-# 5:写入文件头信息
-# 6:循环编码并将编码后的数据写入文件
-# 7:写入文件尾
-# 8:释放内存
+### 1:创建AVFormatContext结构体
+### 2:在AVFormatContext结构体下，创建AVOutputFormat结构体创建一个输出文件
+### 3:添加视频流，添加音频流 add_stream
+### 4:打开视频流，打开音频流 open_stream
+### 5:写入文件头信息
+### 6:循环编码并将编码后的数据写入文件
+### 7:写入文件尾
+### 8:释放内存
 
 /* Add an output stream. */
 static void add_stream(OutputStream *ost, AVFormatContext *oc,
@@ -228,10 +228,10 @@ static void add_stream(OutputStream *ost, AVFormatContext *oc,
         c->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
 }
 
-# 1: avcodec_find_encoder
-# 2: avformat_new_stream
-# 3: avcodec_alloc_context3
-# 4: 配置参数
+### 1: avcodec_find_encoder
+### 2: avformat_new_stream
+### 3: avcodec_alloc_context3
+### 4: 配置参数
 
 这个过程总结起来是这样的：创建一个编码器，创建一个新的流，设置编码器上下文环境的参数。 
 在这个函数中，音频编码器和视频编码器通过(*codec)->type来区分，然后音频和部分的参数设置必然不同，具体参数的设置，可以参考前面的代码
