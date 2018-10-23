@@ -8,6 +8,8 @@ ffmpeg -i hello.mp4 -r 10 -t 1 hello.gif
 -r:帧率，一秒钟10帧 
 -t:制定gif的时间长度，这里这制定1s钟。
 
+
+
 int main(int argc, char **argv)
 {
     OutputStream video_st = { 0 }, audio_st = { 0 };
