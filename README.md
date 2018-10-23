@@ -1,5 +1,4 @@
-FFmpeg
-
+# FFmpeg
 ffmpeg学习：封装音视频到同一个文件（muxing.c源码分析）
 这里插讲以下使用ffmpeg生成gif的命令： 
 当我们执行muxing可执行文件的时候,比如，执行./muxing hello.mp4，就会生成Mp4文件，我们可以将其转为gif格式的图片： 
@@ -7,8 +6,6 @@ ffmpeg -i hello.mp4 -r 10 -t 1 hello.gif
 -i:指定输入文件 
 -r:帧率，一秒钟10帧 
 -t:制定gif的时间长度，这里这制定1s钟。
-
-
 
 int main(int argc, char **argv)
 {
@@ -22,6 +19,9 @@ int main(int argc, char **argv)
     int encode_video = 0, encode_audio = 0;
     AVDictionary *opt = NULL;
     int i;
+
+    /* Initialize libavcodec, and register all codecs and formats. */
+    av_register_all();
 
     if (argc < 2) {
         printf("usage: %s output_file\n"
@@ -124,6 +124,9 @@ int main(int argc, char **argv)
 
     return 0;
 }
+
+
+
 # 1:创建AVFormatContext结构体
 # 2:在AVFormatContext结构体下，创建AVOutputFormat结构体创建一个输出文件
 # 3:添加视频流，添加音频流 add_stream
